@@ -1,6 +1,6 @@
 package com.zdan91.duiker.service
 
-import com.fasterxml.jackson.databind.ObjectMapper
+//import com.fasterxml.jackson.databind.ObjectMapper
 import com.zdan91.duiker.config.Constants
 import feign.Response
 import feign.codec.ErrorDecoder
@@ -23,11 +23,11 @@ class DuikerErrorDecoder : ErrorDecoder {
 
     private val log = LoggerFactory.getLogger(DuikerErrorDecoder::class.java)
 
-    private val mapper = ObjectMapper()
+//    private val mapper = ObjectMapper()
 
     override fun decode(methodKey: String, response: Response): Exception {
-        val map = mapper.readValue(response.body().asInputStream(), Map::class.java)
-        log.error(map.toString())
+//        val map = mapper.readValue(response.body().asInputStream(), Map::class.java)
+//        log.error(map.toString())
         // TODO implements exception transform
         return RuntimeException(methodKey)
     }

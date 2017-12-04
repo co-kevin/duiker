@@ -1,3 +1,5 @@
+import com.sun.xml.internal.xsom.impl.parser.state.annotation
+
 buildscript {
     ext.kotlin_version = '1.2.0'
     ext {
@@ -14,7 +16,7 @@ buildscript {
 }
 
 group 'com.zdan91'
-version '1.0-SNAPSHOT'
+version '0.0.1'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'kotlin'
 description 'Duiker core library.'
@@ -28,7 +30,6 @@ repositories {
 }
 
 ext {
-    springCloudVersion = 'Dalston.SR4'
     springfox_version = '2.7.0'
 }
 
@@ -36,19 +37,13 @@ dependencies {
     compile('com.baomidou:mybatisplus-spring-boot-starter:1.0.5')
     compile('com.baomidou:mybatis-plus:2.1.4')
     compile("org.liquibase:liquibase-core:3.5.3")
-    compile('org.springframework.cloud:spring-cloud-starter-feign')
+    compile("io.github.openfeign:feign-core:9.5.0")
     compile("io.springfox:springfox-swagger2:${springfox_version}")
-    compile ("org.springframework.boot:spring-boot-autoconfigure")
-    compile ("org.springframework.boot:spring-boot-starter-web")
+    compile ("org.springframework.boot:spring-boot-autoconfigure:${springBootVersion}")
+    compile ("org.springframework.boot:spring-boot-configuration-processor:${springBootVersion}")
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
     compile("org.jetbrains.kotlin:kotlin-reflect:${kotlin_version}")
-}
-
-dependencyManagement {
-    imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-    }
 }
 
 // build source jar

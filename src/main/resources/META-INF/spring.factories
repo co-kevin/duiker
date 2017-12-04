@@ -1,1 +1,5 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.zdan91.duiker.config.DuikerProperties
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.zdan91.duiker.config.LiquibaseConfiguration,\
+  com.zdan91.duiker.config.MybatisConfiguration,\
+  com.zdan91.duiker.config.SwaggerConfiguration,\
+  com.zdan91.duiker.config.DuikerProperties
