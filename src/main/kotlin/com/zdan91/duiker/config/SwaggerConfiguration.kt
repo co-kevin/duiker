@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Profile
 import org.springframework.util.StopWatch
 import springfox.documentation.builders.ApiInfoBuilder
-import springfox.documentation.builders.PathSelectors
+import springfox.documentation.builders.PathSelectors.regex
 import springfox.documentation.spi.DocumentationType
 import springfox.documentation.spring.web.plugins.Docket
 import springfox.documentation.swagger2.annotations.EnableSwagger2
@@ -45,7 +45,7 @@ open class SwaggerConfiguration {
         val docket = Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo)
                 .select()
-                .paths(PathSelectors.any())
+                .paths(regex("/api.*"))
                 .build()
         watch.stop()
         log.debug("Started Swagger in {} ms", watch.totalTimeMillis)
