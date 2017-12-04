@@ -4,13 +4,7 @@ package com.zdan91.duiker.config
  * @author hookszhang on 30/10/2017.
  */
 object Constants {
-
-    const val SPRING_PROFILE_DEVELOPMENT = "dev"
-    const val SPRING_PROFILE_TEST = "test"
-    const val SPRING_PROFILE_PRODUCTION = "prod"
     // Spring profile used to disable swagger
     const val SPRING_PROFILE_SWAGGER = "swagger"
-    // Spring profile used to disable running liquibase
-    const val SPRING_PROFILE_NO_LIQUIBASE = "no-liquibase"
     const val DUIKER_FEIGN_ERROR_DECODER = "duiker-feign-error-decoder"
 }
