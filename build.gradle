@@ -33,6 +33,7 @@ ext {
 
 dependencies {
     compile("org.liquibase:liquibase-core:3.5.3")
+    compile('org.springframework.cloud:spring-cloud-starter-feign')
     compile("io.springfox:springfox-swagger2:${springfox_version}")
     compile ("org.springframework.boot:spring-boot-autoconfigure")
     compile ("org.springframework.boot:spring-boot-starter-web")
