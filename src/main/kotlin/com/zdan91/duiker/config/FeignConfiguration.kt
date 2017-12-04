@@ -26,7 +26,7 @@ open class FeignConfiguration {
     @Profile(Constants.DUIKER_FEIGN_ERROR_DECODER)
     open fun duikerErrorDecoder(): ErrorDecoder {
         log.debug("Register Duiker Error Decoder")
-        return ErrorDecoder { methodKey, response ->
+        return ErrorDecoder { methodKey, _ ->
             log.error("Decode error: {}", methodKey)
             RuntimeException(methodKey)
         }
