@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Profile
 import org.springframework.util.StopWatch
 import springfox.documentation.builders.ApiInfoBuilder
-import springfox.documentation.builders.PathSelectors.regex
+import springfox.documentation.builders.RequestHandlerSelectors
 import springfox.documentation.spi.DocumentationType
 import springfox.documentation.spring.web.plugins.Docket
 import springfox.documentation.swagger2.annotations.EnableSwagger2
@@ -28,6 +28,8 @@ open class SwaggerConfiguration {
     private val description: String? = null
     @Value("\${info.project.version}")
     private val version: String? = null
+    @Value("\${duiker.swagger.scan-base-package}")
+    private val swaggerScanBasePackage: String? = null
 
     @Bean
     open fun createRestApi(): Docket {
@@ -45,7 +47,7 @@ open class SwaggerConfiguration {
         val docket = Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo)
                 .select()
-                .paths(regex("/api.*"))
+                .apis(RequestHandlerSelectors.basePackage(swaggerScanBasePackage))
                 .build()
         watch.stop()
         log.debug("Started Swagger in {} ms", watch.totalTimeMillis)
