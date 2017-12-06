@@ -2,9 +2,9 @@ package com.zdan91.duiker.config
 
 import feign.codec.ErrorDecoder
 import org.slf4j.LoggerFactory
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.context.annotation.Profile
 import java.lang.RuntimeException
 
 /**
@@ -19,11 +19,12 @@ open class FeignConfiguration {
 
     /**
      * Duiker Error Decoder.
-     * Configure spring profiles includes: <b>duiker-feign-error-decoder</b> to enable this error decoder.
+     *
+     * Configure application.yml : <b>duiker.feign.error-decoder.enable</b> to enable this error decoder.
      * Decoder Exception from rpc service.
      */
     @Bean
-    @Profile(Constants.DUIKER_FEIGN_ERROR_DECODER)
+    @ConditionalOnProperty(value = ["duiker.feign.error-decoder.enable"], havingValue = "ok")
     open fun duikerErrorDecoder(): ErrorDecoder {
         log.debug("Register Duiker Error Decoder")
         return ErrorDecoder { methodKey, _ ->
