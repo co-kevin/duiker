@@ -14,7 +14,7 @@ buildscript {
 }
 
 group 'com.zdan91'
-version '0.0.2-dev'
+version '0.0.4-dev'
 apply plugin: 'java'
 apply plugin: 'kotlin'
 description 'Duiker core library.'

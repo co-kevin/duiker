@@ -12,6 +12,6 @@ class DuikerProperties {
     val swagger = Swagger()
 
     class Swagger {
-        val scanBasePackage: String? = null
+        var scanBasePackage: String? = null
     }
 }
