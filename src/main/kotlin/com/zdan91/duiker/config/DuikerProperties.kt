@@ -8,4 +8,10 @@ import org.springframework.boot.context.properties.ConfigurationProperties
  * Properties are configured in the application.yml file.
  */
 @ConfigurationProperties(prefix = "duiker", ignoreUnknownFields = false)
-class DuikerProperties
+class DuikerProperties {
+    val swagger = Swagger()
+
+    class Swagger {
+        val scanBasePackage: String? = null
+    }
+}

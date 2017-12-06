@@ -18,7 +18,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2
 @Configuration
 @EnableSwagger2
 @Profile(Constants.SPRING_PROFILE_SWAGGER)
-open class SwaggerConfiguration {
+open class SwaggerConfiguration(private var duikerProperties: DuikerProperties) {
 
     private val log = LoggerFactory.getLogger(SwaggerConfiguration::class.java)
 
@@ -28,8 +28,6 @@ open class SwaggerConfiguration {
     private val description: String? = null
     @Value("\${info.project.version}")
     private val version: String? = null
-    @Value("\${duiker.swagger.scan-base-package}")
-    private val swaggerScanBasePackage: String? = null
 
     @Bean
     open fun createRestApi(): Docket {
@@ -47,7 +45,7 @@ open class SwaggerConfiguration {
         val docket = Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage(swaggerScanBasePackage))
+                .apis(RequestHandlerSelectors.basePackage(duikerProperties.swagger.scanBasePackage))
                 .build()
         watch.stop()
         log.debug("Started Swagger in {} ms", watch.totalTimeMillis)
