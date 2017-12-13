@@ -2,16 +2,16 @@ package com.zdan91.duiker.exception;
 
 import org.springframework.http.HttpStatus;
 
-public class BuffException extends RuntimeException {
+public class CustomException extends RuntimeException {
     private String message;
     private int code;
 
-    public BuffException(String message, int code) {
+    public CustomException(String message, int code) {
         this.message = message;
         this.code = code;
     }
 
-    public BuffException(String message) {
+    public CustomException(String message) {
         this.message = message;
         this.code = HttpStatus.BAD_REQUEST.value();
     }
@@ -26,7 +26,7 @@ public class BuffException extends RuntimeException {
 
     @Override
     public String toString() {
-        return "BuffException{" +
+        return "CustomException{" +
                 "message='" + message + '\'' +
                 ", code=" + code +
                 '}';
