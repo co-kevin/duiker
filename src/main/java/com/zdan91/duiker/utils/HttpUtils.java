@@ -16,11 +16,7 @@ public class HttpUtils {
     public static final String HEADER_PHONE = "X-user-phone";
 
     static {
-        try {
-            getServletRequestAttributes();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        getServletRequestAttributes();
     }
 
     private static ServletRequestAttributes getServletRequestAttributes() {
