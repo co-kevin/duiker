@@ -14,7 +14,7 @@ buildscript {
 }
 
 group 'com.zdan91'
-version '0.0.5-dev'
+version '0.0.9-dev'
 apply plugin: 'java'
 apply plugin: 'kotlin'
 description 'Duiker core library.'
@@ -51,6 +51,8 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
     compile("org.jetbrains.kotlin:kotlin-reflect:${kotlin_version}")
+
+    compile 'javax.servlet:javax.servlet-api:4.0.0'
 }
 
 // build source jar
