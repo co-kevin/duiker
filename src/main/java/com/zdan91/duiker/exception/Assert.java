@@ -1,5 +1,8 @@
 package com.zdan91.duiker.exception;
 
+/**
+ * 断言工具类
+ */
 public class Assert {
 
     private static final int DEFAULT_CODE = 400;

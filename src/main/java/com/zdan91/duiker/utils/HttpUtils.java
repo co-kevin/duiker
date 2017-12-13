@@ -5,7 +5,9 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 
-
+/**
+ * 从 request 的 header 中获取用户的基本信息
+ */
 public class HttpUtils {
     public static final String HEADER_USER_ID = "X-user-id";
     public static final String HEADER_ACCOUNT = "X-user-account";
@@ -26,11 +28,20 @@ public class HttpUtils {
         return servletRequestAttributes;
     }
 
+    /**
+     * 获取用户 id
+     *
+     * @return
+     */
     public static Integer getHeaderUserId() {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         return request.getIntHeader(HEADER_USER_ID);
     }
 
+    /**
+     * 获取用户基本信息,包括 id,account,昵称,头像,手机号码
+     * @return
+     */
     public static BaseUserInfo getBaseUserInfo() {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         int userId = request.getIntHeader(HEADER_USER_ID);
@@ -42,6 +53,9 @@ public class HttpUtils {
     }
 
 
+    /**
+     * 封装用户的基本信息,存放于 header 中
+     */
     public static class BaseUserInfo {
         private String photo;
         private String phone;
