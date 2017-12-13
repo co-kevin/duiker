@@ -49,6 +49,9 @@ public class HttpUtils {
         private String account;
         private Integer id;
 
+        public BaseUserInfo() {
+        }
+
         public BaseUserInfo(String photo, String phone, String nickname, String account, Integer id) {
             this.photo = photo;
             this.phone = phone;
