@@ -14,7 +14,7 @@ buildscript {
 }
 
 group 'com.zdan91'
-version '0.0.9-dev'
+version '0.0.10-dev'
 apply plugin: 'java'
 apply plugin: 'kotlin'
 description 'Duiker core library.'
@@ -36,7 +36,7 @@ dependencies {
     compile("io.github.openfeign:feign-core:9.5.0")
     compile("io.springfox:springfox-swagger2:${springfox_version}")
     // https://mvnrepository.com/artifact/org.springframework/spring-web
-    compile group: 'org.springframework', name: 'spring-web', version: '3.0.2.RELEASE'
+    compile 'org.springframework:spring-web:4.3.13.RELEASE'
     compile ("org.springframework.boot:spring-boot-autoconfigure:${springBootVersion}")
     compile ("org.springframework.boot:spring-boot-configuration-processor:${springBootVersion}")
     testCompile group: 'junit', name: 'junit', version: '4.12'
