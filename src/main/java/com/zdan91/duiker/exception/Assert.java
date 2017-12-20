@@ -16,6 +16,10 @@ public class Assert {
         }
     }
 
+    public static void notFound(Object object) {
+        isTrue(object == null, "resource not found", 404);
+    }
+
     public static void isFalse(boolean expression, String message) {
         isTrue(!expression, message, DEFAULT_CODE);
     }

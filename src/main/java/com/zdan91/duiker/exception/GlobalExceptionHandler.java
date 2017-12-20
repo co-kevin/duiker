@@ -19,6 +19,8 @@ public class GlobalExceptionHandler extends AbstractHandlerExceptionResolver {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        } else {
+            return null;
         }
         return new ModelAndView();
     }
