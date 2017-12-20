@@ -2,12 +2,10 @@ package com.zdan91.duiker.exception;
 
 import org.springframework.http.HttpStatus;
 
-/**
- * 自定义业务异常
- */
+
 public class CustomException extends RuntimeException {
-    private String message;//错误信息
-    private int code;//错误码
+    private String message;
+    private int code;
 
     public CustomException(String message, int code) {
         this.message = message;

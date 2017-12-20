@@ -6,7 +6,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * 从 request 的 header 中获取用户的基本信息
+ * from request get some info
  */
 public class HttpUtils {
     public static final String HEADER_USER_ID = "X-user-id";
@@ -25,7 +25,7 @@ public class HttpUtils {
     }
 
     /**
-     * 获取用户 id
+     * get user id
      *
      * @return
      */
@@ -35,7 +35,7 @@ public class HttpUtils {
     }
 
     /**
-     * 获取用户基本信息,包括 id,account,昵称,头像,手机号码
+     * get user's base info
      * @return
      */
     public static BaseUserInfo getBaseUserInfo() {
@@ -50,7 +50,7 @@ public class HttpUtils {
 
 
     /**
-     * 封装用户的基本信息,存放于 header 中
+     * box user base info
      */
     public static class BaseUserInfo {
         private String photo;
