@@ -14,7 +14,7 @@ object SecurityUtils {
     /**
      * 从 ThreadLocal 中获得当前登录用户
      */
-    fun currentLoginUser() : User? {
+    fun currentLoginUser(): User? {
         return threadLocal.get()
     }
 
@@ -28,7 +28,7 @@ object SecurityUtils {
     /**
      * Check if a user is authenticated.
      */
-    fun isAuthenticated() : Boolean {
+    fun isAuthenticated(): Boolean {
         return threadLocal.get() != null
     }
 }

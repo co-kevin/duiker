@@ -12,14 +12,14 @@ object HeaderUtils {
     /**
      * Create dialog headers
      */
-    fun createDialog(type: String, message: String) : HttpHeaders? {
+    fun createDialog(type: String, message: String): HttpHeaders? {
         val headers = HttpHeaders()
         headers.set("X-dialog-type", type)
         headers.set("X-dialog-message", toUnicode(message))
         return headers
     }
 
-    private fun toUnicode(message: String) : String {
+    private fun toUnicode(message: String): String {
         val unicode = StringBuffer()
         (0 until message.length)
             .map {
