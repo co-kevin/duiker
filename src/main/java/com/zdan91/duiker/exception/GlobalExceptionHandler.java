@@ -11,10 +11,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+
+/**
+ * 处理自定义异常
+ *
+ * @author shijikun
+ * @date 15/12/2017 4:02 PM
+ */
 @Component
 public class GlobalExceptionHandler extends AbstractHandlerExceptionResolver {
 
     private Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+
+    /**
+     * 将默认的500状态码,修改为自定义的 code
+     *
+     * @param request
+     * @param response
+     * @param handler
+     * @param ex
+     * @return
+     */
     @Override
     protected ModelAndView doResolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
         if (ex instanceof CustomException) {

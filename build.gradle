@@ -12,12 +12,12 @@ buildscript {
         classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlin_version}")
     }
 }
-
 group 'com.zdan91'
 version '0.0.15-dev'
 apply plugin: 'java'
 apply plugin: 'kotlin'
 description 'Duiker core library.'
+compileJava {options.encoding = "UTF-8"}
 
 sourceCompatibility = 1.8
 
