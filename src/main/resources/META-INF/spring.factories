@@ -2,5 +2,6 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   com.zdan91.duiker.config.LiquibaseConfiguration,\
   com.zdan91.duiker.config.MybatisConfiguration,\
   com.zdan91.duiker.config.FeignConfiguration,\
+  com.zdan91.duiker.exception.GlobalExceptionHandler,\
   com.zdan91.duiker.config.DuikerProperties,\
   com.zdan91.duiker.config.DuikerConfiguration

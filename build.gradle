@@ -1,7 +1,7 @@
 buildscript {
     ext.kotlin_version = '1.2.0'
     ext {
-        springBootVersion = '1.5.8.RELEASE'
+        springBootVersion = '1.5.9.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -12,12 +12,12 @@ buildscript {
         classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlin_version}")
     }
 }
-
 group 'com.zdan91'
-version '0.0.12-dev'
+version '0.0.15-dev'
 apply plugin: 'java'
 apply plugin: 'kotlin'
 description 'Duiker core library.'
+compileJava {options.encoding = "UTF-8"}
 
 sourceCompatibility = 1.8
 
@@ -33,7 +33,6 @@ dependencies {
     compile('org.springframework.cloud:spring-cloud-starter-eureka:1.4.0.RELEASE')
     compile('org.springframework.cloud:spring-cloud-starter-feign:1.4.0.RELEASE')
     compile('org.springframework.cloud:spring-cloud-starter-hystrix:1.4.0.RELEASE')
-    compile('org.springframework.boot:spring-boot-starter-web:1.5.8.RELEASE')
     compile('org.springframework.boot:spring-boot-starter-actuator:1.5.8.RELEASE')
     compile('org.springframework.cloud:spring-cloud-starter-config:1.4.0.RELEASE')
     compile('org.springframework.cloud:spring-cloud-sleuth-zipkin:1.3.0.RELEASE')
@@ -43,6 +42,7 @@ dependencies {
     compile("org.liquibase:liquibase-core:3.5.3")
     compile("io.github.openfeign:feign-core:9.5.0")
     compile("io.springfox:springfox-swagger2:${springfox_version}")
+    compile ("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
     compile group: 'org.springframework', name: 'spring-web', version: '3.0.2.RELEASE'
     compile ("org.springframework.boot:spring-boot-autoconfigure:${springBootVersion}")
     compile ("org.springframework.boot:spring-boot-configuration-processor:${springBootVersion}")

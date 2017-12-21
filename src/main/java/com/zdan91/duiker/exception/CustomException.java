@@ -3,7 +3,7 @@ package com.zdan91.duiker.exception;
 import org.springframework.http.HttpStatus;
 
 /**
- * 自定义业务异常
+ * 自定义异常类
  */
 public class CustomException extends RuntimeException {
     private String message;//错误信息
