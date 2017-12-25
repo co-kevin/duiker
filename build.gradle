@@ -13,11 +13,11 @@ buildscript {
     }
 }
 group 'com.zdan91'
-version '0.0.15-dev'
+version '0.0.18-dev'
 apply plugin: 'java'
 apply plugin: 'kotlin'
 description 'Duiker core library.'
-compileJava {options.encoding = "UTF-8"}
+compileJava { options.encoding = "UTF-8" }
 
 sourceCompatibility = 1.8
 
@@ -27,29 +27,43 @@ repositories {
 
 ext {
     springfox_version = '2.7.0'
+    springCloudVersion = '1.4.0.RELEASE'
 }
 
 dependencies {
-    compile('org.springframework.cloud:spring-cloud-starter-eureka:1.4.0.RELEASE')
-    compile('org.springframework.cloud:spring-cloud-starter-feign:1.4.0.RELEASE')
-    compile('org.springframework.cloud:spring-cloud-starter-hystrix:1.4.0.RELEASE')
-    compile('org.springframework.boot:spring-boot-starter-actuator:1.5.8.RELEASE')
-    compile('org.springframework.cloud:spring-cloud-starter-config:1.4.0.RELEASE')
-    compile('org.springframework.cloud:spring-cloud-sleuth-zipkin:1.3.0.RELEASE')
-    compile('org.jolokia:jolokia-core:1.3.7')
-    compile('com.baomidou:mybatisplus-spring-boot-starter:1.0.5')
-    compile('com.baomidou:mybatis-plus:2.1.4')
+    /*springBoot*/
+    compile("org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}")
+    compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+    compile("org.springframework.boot:spring-boot-autoconfigure:${springBootVersion}")
+    compile("org.springframework.boot:spring-boot-configuration-processor:${springBootVersion}")
+    /*springCloud*/
+    compile("org.springframework.cloud:spring-cloud-starter-eureka:${springCloudVersion}")
+    compile("org.springframework.cloud:spring-cloud-starter-feign:${springCloudVersion}")
+    compile("org.springframework.cloud:spring-cloud-starter-hystrix:${springCloudVersion}")
+    compile("org.springframework.cloud:spring-cloud-starter-config:${springCloudVersion}")
+    compile("org.springframework.cloud:spring-cloud-starter-eureka-server:${springCloudVersion}") {
+        exclude group: 'javax.servlet'
+    }
+    compile("org.springframework.cloud:spring-cloud-sleuth-zipkin:1.3.0.RELEASE")
+    compile("org.jolokia:jolokia-core:1.3.7")
+    /*数据库*/
+    compile("com.baomidou:mybatisplus-spring-boot-starter:1.0.5")
+    compile("com.baomidou:mybatis-plus:2.1.4")
     compile("org.liquibase:liquibase-core:3.5.3")
+    compile("com.alibaba:druid:1.1.5")
+
     compile("io.github.openfeign:feign-core:9.5.0")
+    /*swagger*/
     compile("io.springfox:springfox-swagger2:${springfox_version}")
-    compile ("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
-    compile group: 'org.springframework', name: 'spring-web', version: '3.0.2.RELEASE'
-    compile ("org.springframework.boot:spring-boot-autoconfigure:${springBootVersion}")
-    compile ("org.springframework.boot:spring-boot-configuration-processor:${springBootVersion}")
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+
+    /*kotlin*/
+    compile("org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version")
     compile("org.jetbrains.kotlin:kotlin-reflect:${kotlin_version}")
-    compile 'javax.servlet:javax.servlet-api:4.0.0'
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile("javax.servlet:javax.servlet-api:4.0.0")
+
+    /*工具类*/
+    compile("com.xiaoleilu:hutool-all:3.2.2")
+    compile("org.projectlombok:lombok:1.16.18")
 }
 
 // build source jar
