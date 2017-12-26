@@ -64,6 +64,7 @@ dependencies {
     /*工具类*/
     compile("com.xiaoleilu:hutool-all:3.2.2")
     compile("org.projectlombok:lombok:1.16.18")
+    compile 'joda-time:joda-time:2.9.9'
 }
 
 // build source jar
