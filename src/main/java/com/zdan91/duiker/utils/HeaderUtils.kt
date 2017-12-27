@@ -12,6 +12,7 @@ object HeaderUtils {
     /**
      * Create dialog headers
      */
+    @JvmStatic
     fun createDialog(type: String, message: String): HttpHeaders? {
         val headers = HttpHeaders()
         headers.set("X-dialog-type", type)
