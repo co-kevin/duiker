@@ -46,23 +46,30 @@ repositories {
 ext {
     springfox_version = '2.7.0'
     springCloudVersion = 'Finchley.M9'
+    feignCoreVersion = '9.5.1'
+    mysqlVersion = '5.1.44'
+    mybatisplusVersion = '2.1.4'
+    mybatisplusStarterVersion = '1.0.5'
+    liquibaseCoreVersion = '3.5.3'
+    servletApiVersion = '4.0.0'
+    hutoolVersion = '3.2.2'
+    lombokVersion = '1.16.18'
+    jodaTimeVersion = '2.9.9'
 }
 
 dependencies {
-    compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-server')
-    compile("org.jolokia:jolokia-core:1.3.7")
-    compile('io.github.openfeign:feign-core:9.5.1')
-    compile('org.springframework:spring-web:5.0.4.RELEASE')
-    compile('mysql:mysql-connector-java:5.1.44')
-    compile("com.baomidou:mybatisplus-spring-boot-starter:1.0.5")
-    compile("com.baomidou:mybatis-plus:2.1.4")
-    compile("org.liquibase:liquibase-core:3.5.3")
+    compile("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server")
+    compile("io.github.openfeign:feign-core:${feignCoreVersion}")
+    compile("mysql:mysql-connector-java:${mysqlVersion}")
+    compile("com.baomidou:mybatisplus-spring-boot-starter:${mybatisplusStarterVersion}")
+    compile("com.baomidou:mybatis-plus:${mybatisplusVersion}")
+    compile("org.liquibase:liquibase-core:${liquibaseCoreVersion}")
     compile("io.springfox:springfox-swagger2:${springfox_version}")
     compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
     compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
-    compile("javax.servlet:javax.servlet-api:4.0.0")
-    compile("com.xiaoleilu:hutool-all:3.2.2")
-    compile("org.projectlombok:lombok:1.16.18")
+    compile("javax.servlet:javax.servlet-api:${servletApiVersion}")
+    compile("com.xiaoleilu:hutool-all:${hutoolVersion}")
+    compile("org.projectlombok:lombok:${lombokVersion}")
     compile 'joda-time:joda-time:2.9.9'
 }
 
