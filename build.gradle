@@ -1,71 +1,75 @@
 buildscript {
-    ext.kotlin_version = '1.2.0'
     ext {
-        springBootVersion = '1.5.9.RELEASE'
+        kotlinVersion = '1.2.21'
+        springBootVersion = '2.0.0.RELEASE'
     }
     repositories {
         mavenCentral()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlin_version}")
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
     }
 }
-group 'com.zdan91'
-version '0.0.20-dev'
+
 apply plugin: 'java'
 apply plugin: 'kotlin'
+apply plugin: 'io.spring.dependency-management'
+
+group 'space.hookszhang'
+version '0.0.20-dev'
 description 'Duiker core library.'
 compileJava { options.encoding = "UTF-8" }
 
 sourceCompatibility = 1.8
 
+compileKotlin {
+    kotlinOptions {
+        freeCompilerArgs = ["-Xjsr305=strict"]
+        jvmTarget = "1.8"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        freeCompilerArgs = ["-Xjsr305=strict"]
+        jvmTarget = "1.8"
+    }
+}
+
 repositories {
     mavenCentral()
+    maven { url "https://repo.spring.io/milestone" }
+    maven { url 'https://jitpack.io' }
 }
 
 ext {
     springfox_version = '2.7.0'
-    springCloudVersion = '1.4.0.RELEASE'
+    springCloudVersion = 'Finchley.M9'
 }
 
 dependencies {
-    /*springBoot*/
-    compile("org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}")
-    compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
-    compile("org.springframework.boot:spring-boot-autoconfigure:${springBootVersion}")
-    compile("org.springframework.boot:spring-boot-configuration-processor:${springBootVersion}")
-    /*springCloud*/
-    compile("org.springframework.cloud:spring-cloud-starter-eureka:${springCloudVersion}")
-    compile("org.springframework.cloud:spring-cloud-starter-feign:${springCloudVersion}")
-    compile("org.springframework.cloud:spring-cloud-starter-hystrix:${springCloudVersion}")
-    compile("org.springframework.cloud:spring-cloud-starter-config:${springCloudVersion}")
-    compile("org.springframework.cloud:spring-cloud-starter-eureka-server:${springCloudVersion}") {
-        exclude group: 'javax.servlet'
-    }
-    compile("org.springframework.cloud:spring-cloud-sleuth-zipkin:1.3.0.RELEASE")
+    compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-server')
     compile("org.jolokia:jolokia-core:1.3.7")
-    /*数据库*/
+    compile('io.github.openfeign:feign-core:9.5.1')
+    compile('org.springframework:spring-web:5.0.4.RELEASE')
     compile('mysql:mysql-connector-java:5.1.44')
     compile("com.baomidou:mybatisplus-spring-boot-starter:1.0.5")
     compile("com.baomidou:mybatis-plus:2.1.4")
     compile("org.liquibase:liquibase-core:3.5.3")
-    compile("com.alibaba:druid:1.1.5")
-
-    compile("io.github.openfeign:feign-core:9.5.0")
-    /*swagger*/
     compile("io.springfox:springfox-swagger2:${springfox_version}")
-
-    /*kotlin*/
-    compile("org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version")
-    compile("org.jetbrains.kotlin:kotlin-reflect:${kotlin_version}")
+    compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
+    compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
     compile("javax.servlet:javax.servlet-api:4.0.0")
-
-    /*工具类*/
     compile("com.xiaoleilu:hutool-all:3.2.2")
     compile("org.projectlombok:lombok:1.16.18")
     compile 'joda-time:joda-time:2.9.9'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
 }
 
 // build source jar
